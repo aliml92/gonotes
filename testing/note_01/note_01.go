@@ -1,4 +1,4 @@
-// link: https://blog.logrocket.com/advanced-unit-testing-patterns-go/
+// source: https://blog.logrocket.com/advanced-unit-testing-patterns-go/ 
 package main
 
 import (
