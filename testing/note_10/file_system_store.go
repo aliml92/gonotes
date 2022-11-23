@@ -1,4 +1,4 @@
-package main
+package poker
 
 import (
 	"encoding/json"
@@ -7,7 +7,7 @@ import (
 	"sort"
 )
 
-// FileSystemPlayerStore stores players in the filesystem
+// FileSystemPlayerStore stores players in the filesystem.
 type FileSystemPlayerStore struct {
 	database *json.Encoder
 	league   League
@@ -15,9 +15,9 @@ type FileSystemPlayerStore struct {
 
 // NewFileSystemPlayerStore creates a FileSystemPlayerStore initialising the store if needed.
 func NewFileSystemPlayerStore(file *os.File) (*FileSystemPlayerStore, error) {
-	
+
 	err := initialisePlayerDBFile(file)
-	
+
 	if err != nil {
 		return nil, fmt.Errorf("problem initialising player db file, %v", err)
 	}
@@ -30,10 +30,9 @@ func NewFileSystemPlayerStore(file *os.File) (*FileSystemPlayerStore, error) {
 
 	return &FileSystemPlayerStore{
 		database: json.NewEncoder(&tape{file}),
-		league: league,
+		league:   league,
 	}, nil
 }
-
 
 func initialisePlayerDBFile(file *os.File) error {
 	file.Seek(0, 0)
@@ -46,7 +45,7 @@ func initialisePlayerDBFile(file *os.File) error {
 
 	if info.Size() == 0 {
 		file.Write([]byte("[]"))
-		file.Seek(0,0)
+		file.Seek(0, 0)
 	}
 
 	return nil
@@ -63,7 +62,7 @@ func (f *FileSystemPlayerStore) GetLeague() League {
 // GetPlayerScore retrieves a player's score.
 func (f *FileSystemPlayerStore) GetPlayerScore(name string) int {
 
-	player := f.GetLeague().Find(name)
+	player := f.league.Find(name)
 
 	if player != nil {
 		return player.Wins
@@ -72,7 +71,7 @@ func (f *FileSystemPlayerStore) GetPlayerScore(name string) int {
 	return 0
 }
 
-// RecordWin will store a win for a player, incrementing wins if already known
+// RecordWin will store a win for a player, incrementing wins if already known.
 func (f *FileSystemPlayerStore) RecordWin(name string) {
 	player := f.league.Find(name)
 
