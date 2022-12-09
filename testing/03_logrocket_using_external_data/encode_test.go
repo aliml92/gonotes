@@ -1,5 +1,5 @@
 // source: https://blog.logrocket.com/advanced-unit-testing-patterns-go/ 
-package main
+package encode
 
 import (
 	"os"
