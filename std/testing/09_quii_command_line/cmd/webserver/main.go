@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/aliml92/gonotes/testing/09_quii_command_line"
+	"github.com/aliml92/gonotes/std/testing/09_quii_command_line"
 )
 
 
