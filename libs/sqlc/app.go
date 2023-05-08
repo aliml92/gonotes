@@ -6,7 +6,7 @@ import (
 	"log"
 	"reflect"
 
-	"github.com/aliml92/gonotes/sqlc/db"
+	"github.com/aliml92/gonotes/libs/sqlc/db"
 
 	_ "github.com/lib/pq"
 )
