@@ -1,0 +1,2 @@
+user default     on >redacted ~* &* +@all
+user test_user   on >redacted ~* &* +@all
