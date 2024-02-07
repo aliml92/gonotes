@@ -1,0 +1,18 @@
+services:
+  postgres:
+    image: postgres:16.1
+    environment:
+      POSTGRES_DB: lndb
+      POSTGRES_USER: lndbuser
+      POSTGRES_PASSWORD: lndbpassword
+      PGDATA: /data/postgres
+    volumes:
+       - lndata:/data/postgres
+    ports:
+      - 5434:5432
+    expose:
+      - 5434        
+    restart: unless-stopped  
+
+volumes:
+    lndata:
